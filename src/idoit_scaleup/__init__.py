@@ -1,20 +1,22 @@
 from .object import IDoitObject
 from . import consts
 from pprint import pprint
-from .location import IDoitLocation
-from .racktables import Racktables
-from .category import IDoitCategory
-from .connector import IDoitConnector
-from .networkport import IDoitNetworkPort
-from .dialog import IDoitDialog
-from .search import IDoitSearch
-from .memory import IDoitMemory
-from .cpu import IDoitCpu
-from .power_consumer import IDoitPowerConsumer
-from .storage_device import IDoitStorageDevice
 from .access import IDoitAccess
 from .cat_ip import IDoitIP
+from .cat_network import IDoitNetwork
+from .cat_vlan import IDoitVlan
+from .category import IDoitCategory
 from .conditional_read import IDoitConditionalRead
+from .connector import IDoitConnector
+from .cpu import IDoitCpu
+from .dialog import IDoitDialog
+from .location import IDoitLocation
+from .memory import IDoitMemory
+from .networkport import IDoitNetworkPort
+from .power_consumer import IDoitPowerConsumer
+from .racktables import Racktables
+from .search import IDoitSearch
+from .storage_device import IDoitStorageDevice
 
 
 def createApiCall(cfg, category):
@@ -38,6 +40,10 @@ def createApiCall(cfg, category):
         return IDoitCpu(cfg)
     if category == consts.C__CATG__STORAGE_DEVICE:
         return IDoitStorageDevice(cfg)
+    if category == consts.C__CATS__NET:
+        return IDoitNetwork(cfg)
+    if category == consts.C__CATS__LAYER2_NET:
+        return IDoitVlan(cfg)
     if category.startswith('C__OBJTYPE__'):
         return IDoitObject(cfg, category)
     if category.startswith('C__CATS__') or category.startswith('C__CATG__'):

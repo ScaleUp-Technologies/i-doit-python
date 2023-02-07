@@ -155,12 +155,30 @@ class IDoitCategory(IDoitApiBase):
         return rtn
 
     def partial_equal(self, obj1, obj2):
+
         if isinstance(obj1, str):
             return (obj1 == obj2)
+
         if isinstance(obj1, int):
             return (obj1 == obj2)
-        if obj2 is None and not (obj1 is None):
+        if obj1 is None and obj2 is None:
+           return True
+        if obj1 is None:
             return False
+        if obj2 is None:
+            return False
+
+        if isinstance(obj1, list):
+            if isinstance(obj2, list):
+                if len(obj1)!=len(obj2):
+                    return False
+                for ele in obj1:
+                    if ele not in obj2:
+                        return False
+                return True
+            else:
+                return False
+
         for key in obj1.keys():
             if key not in obj2:
                 return False
