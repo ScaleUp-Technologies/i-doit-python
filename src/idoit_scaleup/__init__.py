@@ -1,22 +1,22 @@
 from .object import IDoitObject
 from . import consts
 from pprint import pprint
-from .access import IDoitAccess
+from .cat_access import IDoitAccess
+from .cat_connector import IDoitConnector
+from .cat_cpu import IDoitCpu
 from .cat_ip import IDoitIP
+from .cat_location import IDoitLocation
+from .cat_memory import IDoitMemory
 from .cat_network import IDoitNetwork
+from .cat_networkport import IDoitNetworkPort
+from .cat_power_consumer import IDoitPowerConsumer
+from .cat_racktables import Racktables
 from .cat_vlan import IDoitVlan
 from .category import IDoitCategory
 from .conditional_read import IDoitConditionalRead
-from .connector import IDoitConnector
-from .cpu import IDoitCpu
 from .dialog import IDoitDialog
-from .location import IDoitLocation
-from .memory import IDoitMemory
-from .networkport import IDoitNetworkPort
-from .power_consumer import IDoitPowerConsumer
-from .racktables import Racktables
 from .search import IDoitSearch
-from .storage_device import IDoitStorageDevice
+from .cat_storage_device import IDoitStorageDevice
 
 
 def createApiCall(cfg, category):
