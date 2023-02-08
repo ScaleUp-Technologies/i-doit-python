@@ -139,6 +139,9 @@ class IDoitCategory(IDoitApiBase):
                         return int(data[fieldname]['id'])
                     if field['data_type'] == 'text':
                         return data[fieldname]['id']
+                if field['ui_type'] == 'datetime':
+                    if field['data_type'] == 'date_time':
+                        return data[fieldname]
             except:
                 raise Exception('Wrong conversion ',
                                 self.obj_type, fieldname, field, data)
@@ -162,7 +165,7 @@ class IDoitCategory(IDoitApiBase):
         if isinstance(obj1, int):
             return (obj1 == obj2)
         if obj1 is None and obj2 is None:
-           return True
+            return True
         if obj1 is None:
             return False
         if obj2 is None:
@@ -170,7 +173,7 @@ class IDoitCategory(IDoitApiBase):
 
         if isinstance(obj1, list):
             if isinstance(obj2, list):
-                if len(obj1)!=len(obj2):
+                if len(obj1) != len(obj2):
                     return False
                 for ele in obj1:
                     if ele not in obj2:
