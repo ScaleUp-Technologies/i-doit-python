@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # See also: https://packaging.python.org/en/latest/tutorials/packaging-projects/
-if [ ! -f ~/.pypirc ] ; them
+if [ ! -f ~/.pypirc ] ; then
    echo Please create a ~/.pypirc file first, see:
    echo https://packaging.python.org/en/latest/specifications/pypirc/
    exit 1
