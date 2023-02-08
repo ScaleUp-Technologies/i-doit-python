@@ -4,8 +4,8 @@ from .base import IDoitApiBase
 
 class IDoitConditionalRead(IDoitApiBase):
 
-    def __init__(self, cfg, obj_type: str):
-        super().__init__(cfg, obj_type)
+    def __init__(self, cfg):
+        super().__init__(cfg)
         self.clear_search_list()
 
     def clear_search_list(self):

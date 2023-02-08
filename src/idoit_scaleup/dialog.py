@@ -3,7 +3,8 @@ from .base import IDoitApiBase
 
 class IDoitDialog(IDoitApiBase):
     def __init__(self, cfg, obj_type: str, property: str):
-        super().__init__(cfg, obj_type)
+        super().__init__(cfg)
+        self.obj_type = obj_type
         self.property = property
         self.cache = {}
 

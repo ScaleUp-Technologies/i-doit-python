@@ -2,6 +2,9 @@ from .base import IDoitApiBase
 
 
 class IDoitObject(IDoitApiBase):
+    def __init__(self, cfg, obj_type: str, property: str):
+        super().__init__(cfg)
+        self.obj_type = obj_type
     def get_by_title(self, title: str):
         params = {
             'filter': {

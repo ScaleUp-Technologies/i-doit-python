@@ -9,6 +9,7 @@ fi
 rm -rf dist
 python3 -m build
 python3 -m twine upload --repository testpypi dist/*
+pip3 install --force idoit_scaleup --no-index --find-links file://$(pwd)/dist/
 
 # FIXME Add gitlab tagging
 echo Install:

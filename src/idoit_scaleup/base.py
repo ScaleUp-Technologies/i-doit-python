@@ -4,9 +4,8 @@ from pprint import pprint
 
 
 class IDoitApiBase:
-    def __init__(self, cfg, obj_type: str):
+    def __init__(self, cfg):
         self.cfg = cfg
-        self.obj_type = obj_type
         self.debug = False
 
     def set_debug_mode(self, debug=True):

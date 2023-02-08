@@ -4,8 +4,11 @@ from pprint import pprint
 
 
 class IDoitConnector(IDoitCategory):
+
+    CATEGORY = C__CATG__CONNECTOR
+
     def __init__(self, cfg):
-        super().__init__(cfg, C__CATG__CONNECTOR)
+        super().__init__(cfg, self.CATEGORY)
 
     def convert_field_with_name_assigned_category(self, data):
         return data['assigned_category']['const']

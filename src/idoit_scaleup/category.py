@@ -6,7 +6,8 @@ import json
 
 class IDoitCategory(IDoitApiBase):
     def __init__(self, cfg, obj_type: str):
-        super().__init__(cfg, obj_type)
+        super().__init__(cfg)
+        self.obj_type = obj_type
         params = {
             'category': obj_type
         }

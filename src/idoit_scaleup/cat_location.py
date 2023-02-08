@@ -6,8 +6,10 @@ from copy import deepcopy
 
 class IDoitLocation(IDoitCategory):
 
+    CATEGORY =  C__CATG__LOCATION
+
     def __init__(self, cfg):
-        super().__init__(cfg, C__CATG__LOCATION)
+        super().__init__(cfg, self.CATEGORY)
 
     def convert_field_with_name_pos(self, data):
         return int(data['pos']['visually_from'])

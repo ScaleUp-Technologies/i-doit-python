@@ -5,8 +5,10 @@ from pprint import pprint
 
 class IDoitNetwork(IDoitCategory):
 
+    CATEGORY = C__CATS__NET
+
     def __init__(self, cfg):
-        super().__init__(cfg, C__CATS__NET)
+        super().__init__(cfg, self.CATEGORY)
 
     def convert_field_with_name_layer2_assignments(self, data):
         rtn = []
