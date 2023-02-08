@@ -4,9 +4,9 @@ from .category import IDoitCategory
 
 
 class Racktables(IDoitCategory):
-
+    CATEGORY = C__CATG__CUSTOM_FIELDS_RACKTABLES
     def __init__(self, cfg):
-        super().__init__(cfg, C__CATG__CUSTOM_FIELDS_RACKTABLES)
+        super().__init__(cfg, self.CATEGORY)
         self.rt_link = ''
         self.rt_id = ''
         self.rt_type = ''

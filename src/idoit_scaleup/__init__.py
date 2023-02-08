@@ -17,33 +17,21 @@ from .conditional_read import IDoitConditionalRead
 from .dialog import IDoitDialog
 from .search import IDoitSearch
 from .cat_storage_device import IDoitStorageDevice
-
+import sys
+import inspect
 
 def createApiCall(cfg, category):
-    if category == consts.C__CATG__ACCESS:
-        return IDoitAccess(cfg)
-    if category == consts.C__CATG__CONNECTOR:
-        return IDoitConnector(cfg)
-    if category == consts.C__CATG__CUSTOM_FIELDS_RACKTABLES:
-        return Racktables(cfg)
-    if category == consts.C__CATG__IP:
-        return IDoitIP(cfg)
-    if category == consts.C__CATG__LOCATION:
-        return IDoitLocation(cfg)
-    if category == consts.C__CATG__MEMORY:
-        return IDoitMemory(cfg)
-    if category == consts.C__CATG__NETWORK_PORT:
-        return IDoitNetworkPort(cfg)
-    if category == consts.C__CATG__POWER_CONUMER:
-        return IDoitPowerConsumer(cfg)
-    if category == consts.C__CATG__CPU:
-        return IDoitCpu(cfg)
-    if category == consts.C__CATG__STORAGE_DEVICE:
-        return IDoitStorageDevice(cfg)
-    if category == consts.C__CATS__NET:
-        return IDoitNetwork(cfg)
-    if category == consts.C__CATS__LAYER2_NET:
-        return IDoitVlan(cfg)
+    current_module = sys.modules[__name__]
+    for name, obj in inspect.getmembers(current_module):
+        if inspect.isclass(obj):
+            if issubclass(obj, IDoitCategory):
+                try:
+                    found=False
+                    found = (obj.CATEGORY == category)
+                    if found:
+                        return obj(cfg)
+                except AttributeError:
+                    pass
     if category.startswith('C__OBJTYPE__'):
         return IDoitObject(cfg, category)
     if category.startswith('C__CATS__') or category.startswith('C__CATG__'):
@@ -70,8 +58,16 @@ def createApiDialogs(cfg, category, field):
 
 
 def search(cfg):
-    return IDoitSearch(cfg, 'no_type')
+    return IDoitSearch(cfg)
 
 
 def conditional_read(cfg):
-    return IDoitConditionalRead(cfg, 'no_type')
+    return IDoitConditionalRead(cfg)
+
+def get_all_classes():
+    rtn=[]
+    current_module = sys.modules[__name__]
+    for name, obj in inspect.getmembers(current_module):
+        if inspect.isclass(obj):
+            rtn.append(name)
+    return rtn
