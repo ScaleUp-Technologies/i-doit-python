@@ -27,7 +27,7 @@ class IDoitObject(IDoitApiBase):
         rtn = self.xml_rpc_call('cmdb.objects', params)
         return rtn['result']
 
-    def create_object_with_tile(self, title: str):
+    def create_object_with_title(self, title: str):
         params = {
             'title': title,
             'type': self.obj_type
@@ -37,7 +37,7 @@ class IDoitObject(IDoitApiBase):
     def create_object_if_not_there(self, title):
         obj = self.get_by_title(title)
         if obj is None:
-            r = self.create_object_with_tile(title)
+            r = self.create_object_with_title(title)
             print('-------------------')
             print("%s  (%s) " % (title, self.obj_type))
             print('-------------------')
