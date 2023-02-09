@@ -1,4 +1,4 @@
-from .consts import C__CATG__POWER_CONUMER
+from .consts import C__CATG__POWER_CONSUMER
 from .category import IDoitCategory
 
 
