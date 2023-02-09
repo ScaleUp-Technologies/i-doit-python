@@ -5,5 +5,5 @@ This is an python api for i-doit CMDB.
 ## Install
 
 ```bash
-pip install idoit_scaleup
+pip install idoit-scaleup
 ```
