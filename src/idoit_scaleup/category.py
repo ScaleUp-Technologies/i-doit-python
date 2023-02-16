@@ -103,6 +103,14 @@ class IDoitCategory(IDoitApiBase):
                             (fieldname, json.dumps(data)))
         return int(data[fieldname][0][ref_field])
 
+    def convert_list(self, list):
+        rtn = []
+        for ele in list:
+            rtn.append(int(ele['id']))
+        if len(rtn)==0:
+            return None
+        return rtn
+
     def convert_field(self, fieldname, data):
         object_methods = [method_name for method_name in dir(self)
                           if callable(getattr(self, method_name))]
@@ -140,6 +148,9 @@ class IDoitCategory(IDoitApiBase):
                         return int(data[fieldname]['id'])
                     if field['data_type'] == 'text':
                         return data[fieldname]['id']
+                if field['ui_type'] == 'f_dialog_list':
+                    if field['data_type'] == 'int':
+                        return self.convert_list(data[fieldname])
                 if field['ui_type'] == 'datetime':
                     if field['data_type'] == 'date_time':
                         return data[fieldname]

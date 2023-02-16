@@ -9,6 +9,7 @@ from .cat_location import IDoitLocation
 from .cat_memory import IDoitMemory
 from .cat_network import IDoitNetwork
 from .cat_networkport import IDoitNetworkPort
+from .cat_network_log_port import IDoitNetworkLogicalPort
 from .cat_power_consumer import IDoitPowerConsumer
 from .cat_racktables import Racktables
 from .cat_vlan import IDoitVlan

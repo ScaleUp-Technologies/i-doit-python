@@ -1,0 +1,6 @@
+{
+    "api_key": "secret",
+    "user": "su-api",
+    "password" : "secret",
+    "jrpc_url": "https://idoit-test.ham1.int.yco.de/src/jsonrpc.php"
+}
