@@ -18,8 +18,10 @@ from .conditional_read import IDoitConditionalRead
 from .dialog import IDoitDialog
 from .search import IDoitSearch
 from .cat_storage_device import IDoitStorageDevice
+from .api_log import IDoitApiLog
 import sys
 import inspect
+
 
 def createApiCall(cfg, category):
     current_module = sys.modules[__name__]
@@ -27,7 +29,7 @@ def createApiCall(cfg, category):
         if inspect.isclass(obj):
             if issubclass(obj, IDoitCategory):
                 try:
-                    found=False
+                    found = False
                     found = (obj.CATEGORY == category)
                     if found:
                         return obj(cfg)
@@ -65,10 +67,23 @@ def search(cfg):
 def conditional_read(cfg):
     return IDoitConditionalRead(cfg)
 
+
 def get_all_classes():
-    rtn=[]
+    rtn = []
     current_module = sys.modules[__name__]
     for name, obj in inspect.getmembers(current_module):
         if inspect.isclass(obj):
             rtn.append(name)
     return rtn
+
+
+def turn_on_api_logging():
+    IDoitApiLog.instance().turn_on()
+
+
+def turn_off_api_logging():
+    IDoitApiLog.instance().turn_off()
+
+
+def get_api_log():
+    return IDoitApiLog.instance().get_api_log()

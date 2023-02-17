@@ -1,6 +1,8 @@
 import json
 import requests
 from pprint import pprint
+from .api_log import IDoitApiLog
+from simplejson.errors import JSONDecodeError
 
 
 class IDoitApiBase:
@@ -21,16 +23,30 @@ class IDoitApiBase:
         }
         basic_auth = (self.cfg['user'], self.cfg['password'])
         params['apikey'] = self.cfg['api_key']
-        response = requests.post(
-            self.cfg['jrpc_url'],
-            data=json.dumps(payload),
-            auth=basic_auth,
-            headers=headers
-        ).json()
+        try:
+            response = requests.post(
+                self.cfg['jrpc_url'],
+                data=json.dumps(payload),
+                auth=basic_auth,
+                headers=headers
+            ).json()
+        except JSONDecodeError:
+            print('JSON DECODE ERROR')
+            print('Url')
+            print(self.cfg['jrpc_url'])
+            print('Payload')
+            payload['params']['apikey'] = 'xxx'
+            pprint(payload)
+            response = {}
+
+        IDoitApiLog.instance().append_api_log(
+            self.cfg['jrpc_url'], payload, response)
+
         if self.debug or debug or 'error' in response.keys():
             print('Url')
             print(self.cfg['jrpc_url'])
             print('Payload')
+            payload['params']['apikey'] = 'xxx'
             pprint(payload)
             print('Resonse')
             pprint(response)
