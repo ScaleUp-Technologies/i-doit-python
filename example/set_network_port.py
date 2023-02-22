@@ -16,7 +16,7 @@ api = idoit_apis[consts.C__CATG__NETWORK_PORT]
 api.set_debug_mode()
 data = {
     'title': 'eth2',
-    'addresses': None,
+    'addresses': [],
     'mac': '90:E2:BA:74:27:DC',
     'id': 9201,
     'interface': 408

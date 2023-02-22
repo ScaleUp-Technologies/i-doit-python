@@ -45,7 +45,7 @@ class IDoitNetworkLogicalPort(IDoitCategory):
         if ('addresses' in cdata.keys()) and (cdata['addresses'] is not None):
             rtn = []
             for ele in cdata['addresses']:
-                rtn.append("%d_%s" % (ele, C__CATG__IP))
+                rtn.append(str(ele))
             cdata['addresses'] = rtn
         if ('ports' in cdata.keys()) and (cdata['ports'] is not None):
             rtn = []

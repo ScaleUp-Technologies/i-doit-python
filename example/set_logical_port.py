@@ -19,7 +19,8 @@ data = {
     'mac': 'C8:1F:66:CA:29:52',
     'id': 6,
     'port_type': 1,
-    'ports': [7490, 9188]
+    'ports': [7490, 9188],
+    'addresses': [11],
 }
 cats = api.update_category(OBJ_ID, data)
 
@@ -28,6 +29,7 @@ data = {
     'id': 7,
     'parent': 6,
     'net': [12619],
+    'addresses': [7],
 }
 cats = api.update_category(OBJ_ID, data)
 
