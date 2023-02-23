@@ -48,11 +48,15 @@ class IDoitNetworkPort(IDoitCategory):
         if ('interface' in cdata.keys()) and (cdata['interface'] is not None):
             cdata['interface'] = "%d_C__CATG__NETWORK_INTERFACE" % cdata['interface']
 
-        if ('addresses' in cdata.keys()) and (cdata['addresses'] is not None):
-            rtn = []
-            for ele in cdata['addresses']:
-                rtn.append("%d_C__CATG__IP" % ele)
-            cdata['addresses'] = rtn
+        if ('addresses' in cdata.keys()) :
+            if cdata['addresses'] is None:
+                cdata['addresses'] = None
+                # FIXME Das geht im Moment nicht. siehe Idoit Bug #20429 (sanders)
+            else:
+                rtn = []
+                for ele in cdata['addresses']:
+                    rtn.append(str(ele))
+                cdata['addresses'] = rtn
 
     def save_category(self, objId, data):
         cdata = deepcopy(data)
