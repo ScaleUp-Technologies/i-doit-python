@@ -45,3 +45,10 @@ class IDoitObject(IDoitApiBase):
         else:
             objId = obj['id']
         return objId
+
+    def update_object(self, obj_id: str, title: str):
+        params = {
+            'id': obj_id,
+            'title': title,
+        }
+        return self.xml_rpc_call('cmdb.object.update', params)
