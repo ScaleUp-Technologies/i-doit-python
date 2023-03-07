@@ -33,11 +33,12 @@ class IDoitDialog(IDoitApiBase):
 
     def get_ignore_case(self, value: str, parent: int = None):
         for entry in self.get_all():
+            title=entry['title'].lower()
             if parent is None:
-                if value.lower() == entry['title'].lower():
+                if value.lower() == title:
                     return int(entry['id'])
             else:
-                if (value.lower() == entry['title'].lower() and
+                if (value.lower() == title and
                    entry['parent']['id'] == str(parent)):
                     return int(entry['id'])
         return None

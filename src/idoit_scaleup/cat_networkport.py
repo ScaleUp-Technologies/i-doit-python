@@ -61,9 +61,9 @@ class IDoitNetworkPort(IDoitCategory):
     def save_category(self, objId, data):
         cdata = deepcopy(data)
         self.fix_obj(cdata)
-        super().save_category(objId, cdata)
+        return super().save_category(objId, cdata)
 
     def update_category(self, objId, data):
         cdata = deepcopy(data)
         self.fix_obj(cdata)
-        super().update_category(objId, cdata)
+        return super().update_category(objId, cdata)

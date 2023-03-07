@@ -34,9 +34,9 @@ class IDoitLocation(IDoitCategory):
     def save_category(self, objId, data):
         cdata = deepcopy(data)
         self.fix_empty_position(cdata)
-        super().save_category(objId, cdata)
+        return super().save_category(objId, cdata)
 
     def update_category(self, objId, data):
         cdata = deepcopy(data)
         self.fix_empty_position(cdata)
-        super().update_category(objId, cdata)
+        return super().update_category(objId, cdata)
