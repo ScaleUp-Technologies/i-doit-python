@@ -60,11 +60,11 @@ def createApiDialogs(cfg, category, field):
     return cfg['dialogs'][category][field]
 
 
-def search(cfg):
+def search(cfg) -> IDoitSearch:
     return IDoitSearch(cfg)
 
 
-def conditional_read(cfg):
+def conditional_read(cfg) -> IDoitConditionalRead:
     return IDoitConditionalRead(cfg)
 
 
