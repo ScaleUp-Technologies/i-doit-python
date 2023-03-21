@@ -1,3 +1,4 @@
+from typing import List
 from .base import IDoitApiBase
 
 
@@ -5,12 +6,13 @@ class IDoitObject(IDoitApiBase):
     def __init__(self, cfg, obj_type: str):
         super().__init__(cfg)
         self.obj_type = obj_type
-    def get_by_title(self, title: str):
+    def get_by_title(self, title: str, categories: List = []):
         params = {
             'filter': {
                 'type': self.obj_type,
                 'title': title,
-            }
+            },
+            'categories': categories
         }
         rtn = self.xml_rpc_call('cmdb.objects', params)
         if len(rtn['result']) == 0:
@@ -18,11 +20,12 @@ class IDoitObject(IDoitApiBase):
         else:
             return rtn['result'][0]
 
-    def get_all(self):
+    def get_all(self, categories: List = []):
         params = {
             'filter': {
                 'type': self.obj_type
-            }
+            },
+            'categories': categories
         }
         rtn = self.xml_rpc_call('cmdb.objects', params)
         return rtn['result']
