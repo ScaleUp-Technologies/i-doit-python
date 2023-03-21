@@ -4,9 +4,10 @@ build-backend = "hatchling.build"
 
 [project]
 name = "idoit_scaleup"
-version = "0.0.7"
+version = "0.0.8"
 authors = [
   { name="Sven Anders", email="sanders@scaleuptech.com" },
+  { name="Freerk-Ole Zakfeld", email="fzakfeld@scaleuptech.com" }
 ]
 description = "i-doit pythonapi"
 readme = "README.md"
