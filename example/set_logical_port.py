@@ -6,7 +6,7 @@ import json
 
 config_file = 'idoit.json'
 
-OBJ_ID = 4005
+OBJ_ID = 3115
 
 f = open(config_file)
 cfg = json.load(f)
@@ -15,28 +15,19 @@ idoit_apis = createApiCalls(cfg)
 api = idoit_apis[consts.C__CATG__NETWORK_LOG_PORT]
 api.set_debug_mode()
 data = {
-    'title': 'bond1',
-    'mac': 'C8:1F:66:CA:29:52',
-    'id': 6,
+    'title': 'mgm0',
+    'id': 114,
+    'active': 1,
     'port_type': 1,
-    'ports': [7490, 9188],
-    'addresses': [11],
+    'ports': [],
+    'addresses': [256],
 }
 cats = api.update_category(OBJ_ID, data)
 
-data = {
-    'title': 'mgm0',
-    'id': 7,
-    'parent': 6,
-    'net': [12619],
-    'addresses': [7],
-}
-cats = api.update_category(OBJ_ID, data)
 
 print(json.dumps(cats))
 print('----------------')
 api.set_debug_mode(False)
 cats = api.read_categories(OBJ_ID)
 for cat in cats:
-    # if cat['id']==6:
     print(json.dumps(cat))

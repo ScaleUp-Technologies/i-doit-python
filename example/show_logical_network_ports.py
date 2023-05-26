@@ -5,7 +5,7 @@ import json
 
 config_file = 'idoit.json'
 
-OBJ_ID = 4005
+OBJ_ID = 3115
 
 f = open(config_file)
 cfg = json.load(f)
