@@ -41,12 +41,12 @@ class IDoitNetworkLogicalPort(IDoitCategory):
     def fix_obj(self, cdata):
         if ('interface' in cdata.keys()) and (cdata['interface'] is not None):
             cdata['interface'] = "%d_C__CATG__NETWORK_INTERFACE" % cdata['interface']
-
         if ('addresses' in cdata.keys()) and (cdata['addresses'] is not None):
             rtn = []
             for ele in cdata['addresses']:
-                rtn.append("%d_C__CATG__IP" % ele)
+                rtn.append(str(ele))
             cdata['addresses'] = rtn
+
         if ('ports' in cdata.keys()) and (cdata['ports'] is not None):
             rtn = []
             for ele in cdata['ports']:
