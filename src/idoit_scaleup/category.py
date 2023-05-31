@@ -98,6 +98,8 @@ class IDoitCategory(IDoitApiBase):
     def conv_array_field(self, fieldname, data, ref_field):
         if len(data[fieldname]) == 0:
             return None
+        if type(data[fieldname]) is dict:
+            return int(data[fieldname][ref_field])
         if len(data[fieldname]) != 1:
             raise Exception('Field "%s" has more than one entry %s' %
                             (fieldname, json.dumps(data)))
