@@ -13,7 +13,7 @@ if [ -n "${GIT_STATUS}" ] ; then
     exit 1
 fi
 
-sed -i -e "s/version = .*/version: \"${VERSION}\"/" pyproject.toml
+sed -i -e "s/version = .*/version = \"${VERSION}\"/" pyproject.toml
 git commit -m 'New Version $VERSION' pyproject.toml
 git tag v${VERSION}
 echo git push origin v${VERSION}
