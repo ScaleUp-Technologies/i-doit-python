@@ -45,8 +45,8 @@ class IDoitNetworkPort(IDoitCategory):
             'muss mit ID spezifiziert werden')
 
     def fix_obj(self, cdata):
-        if ('interface' in cdata.keys()) and (cdata['interface'] is not None):
-            cdata['interface'] = "%d_C__CATG__NETWORK_INTERFACE" % cdata['interface']
+        #if ('interface' in cdata.keys()) and (cdata['interface'] is not None):
+        #    cdata['interface'] = "%d_C__CATG__NETWORK_INTERFACE" % cdata['interface']
 
         if ('addresses' in cdata.keys()) :
             if cdata['addresses'] is None:
