@@ -50,7 +50,7 @@ class IDoitNetworkLogicalPort(IDoitCategory):
         if ('ports' in cdata.keys()) and (cdata['ports'] is not None):
             rtn = []
             for ele in cdata['ports']:
-                rtn.append("%d_%s" % (ele, C__CATG__NETWORK_PORT))
+                rtn.append("%d" % (ele))
             cdata['ports'] = rtn
 
     def save_category(self, objId, data):
