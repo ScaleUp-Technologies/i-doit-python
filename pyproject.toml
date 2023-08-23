@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "idoit_scaleup"
-version = "0.0.11"
+version = "0.0.12"
 authors = [
   { name="Sven Anders", email="sanders@scaleuptech.com" },
   { name="Freerk-Ole Zakfeld", email="fzakfeld@scaleuptech.com" }

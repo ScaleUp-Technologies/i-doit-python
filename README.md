@@ -1,6 +1,6 @@
 # idoit_scaleup
 
-This is an python api for i-doit CMDB.
+This is a python api for i-doit CMDB.
 
 ## Install
 
