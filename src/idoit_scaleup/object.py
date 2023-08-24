@@ -22,12 +22,14 @@ class IDoitObject(IDoitApiBase):
         else:
             return rtn['result'][0]
 
-    def get_all(self, categories: List = []):
+    def get_all(self, categories: List = [], ids: List | None = None):
         params = {
             'filter': {
                 'type': self.obj_type
             },
         }
+        if ids:
+            params['filter']['ids'] = ids
         if len(categories) > 0:
             params['categories'] = categories
         rtn = self.xml_rpc_call('cmdb.objects', params)
