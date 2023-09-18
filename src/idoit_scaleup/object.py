@@ -22,6 +22,15 @@ class IDoitObject(IDoitApiBase):
         else:
             return rtn['result'][0]
 
+    def get_by_id(self, obj_id: str, categories: List = []):
+        params = {
+            'id': obj_id
+        }
+        if len(categories) > 0:
+            params['categories'] = categories
+        rtn = self.xml_rpc_call('cmdb.object', params)
+        return rtn['result']
+
     def get_all(self, categories: List = [], ids: List | None = None):
         params = {
             'filter': {
@@ -60,3 +69,30 @@ class IDoitObject(IDoitApiBase):
             'title': title,
         }
         return self.xml_rpc_call('cmdb.object.update', params)
+
+    def archive_object(self, obj_id: str):
+        params = {
+            'id': obj_id,
+            'status': 'C__RECORD_STATUS__ARCHIVED',
+        }
+        return self.xml_rpc_call('cmdb.object.delete', params)
+
+    def delete_object(self, obj_id: str):
+        params = {
+            'id': obj_id,
+            'status': 'C__RECORD_STATUS__DELETED',
+        }
+        return self.xml_rpc_call('cmdb.object.delete', params)
+
+    def purge_object(self, obj_id: str):
+        params = {
+            'id': obj_id,
+            'status': 'C__RECORD_STATUS__PURGE',
+        }
+        return self.xml_rpc_call('cmdb.object.delete', params)
+
+    def recycle_object(self, obj_id: str):
+        params = {
+            'id': obj_id,
+        }
+        return self.xml_rpc_call('cmdb.object.recycle', params)
