@@ -15,6 +15,11 @@ class IDoitDialog(IDoitApiBase):
                 'property': self.property
             }
             r = self.xml_rpc_call('cmdb.dialog.read', params)
+            # Workaround für Ticket #22087
+            # https://help.i-doit.com/hc/en-us/requests/22087
+            if len(r['result'])==1:
+                if isinstance(r['result'][0],list):
+                    r['result']=r['result'][0]
             self.cache = r
         else:
             r = self.cache
