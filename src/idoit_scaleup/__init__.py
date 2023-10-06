@@ -2,6 +2,7 @@ from .object import IDoitObject
 from . import consts
 from pprint import pprint
 from .cat_access import IDoitAccess
+from .cat_application import IDoitApplication
 from .cat_connector import IDoitConnector
 from .cat_cpu import IDoitCpu
 from .cat_ip import IDoitIP
