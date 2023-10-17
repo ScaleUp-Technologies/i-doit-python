@@ -109,7 +109,7 @@ class IDoitCategory(IDoitApiBase):
         rtn = []
         for ele in list:
             rtn.append(int(ele['id']))
-        if len(rtn)==0:
+        if len(rtn) == 0:
             return None
         return rtn
 
@@ -156,6 +156,9 @@ class IDoitCategory(IDoitApiBase):
                 if field['ui_type'] == 'datetime':
                     if field['data_type'] == 'date_time':
                         return data[fieldname]
+                if field['ui_type'] == 'numeric':
+                    if field['data_type'] == 'text':
+                        return float(data[fieldname])
             except:
                 raise Exception('Wrong conversion ',
                                 self.obj_type, fieldname, field, data)
