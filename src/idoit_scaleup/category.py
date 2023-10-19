@@ -155,7 +155,11 @@ class IDoitCategory(IDoitApiBase):
                         return self.convert_list(data[fieldname])
                 if field['ui_type'] == 'datetime':
                     if field['data_type'] == 'date_time':
-                        return data[fieldname]
+                        try:
+                            rtn=data[fieldname]['title']
+                        except:
+                            rtn=data[fieldname]
+                        return rtn
                 if field['ui_type'] == 'numeric':
                     if field['data_type'] == 'text':
                         return float(data[fieldname])
