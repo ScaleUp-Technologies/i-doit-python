@@ -2,7 +2,7 @@ import json
 import requests
 from pprint import pprint
 from .api_log import IDoitApiLog
-from simplejson.errors import JSONDecodeError
+from json.decoder import JSONDecodeError
 
 
 class IDoitApiBase:
