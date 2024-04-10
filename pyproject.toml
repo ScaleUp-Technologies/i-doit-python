@@ -12,6 +12,9 @@ authors = [
 description = "i-doit pythonapi"
 readme = "README.md"
 requires-python = ">=3.7"
+dependencies = [
+  "requests",
+]
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
