@@ -29,3 +29,6 @@ class IDoitIP(IDoitCategory):
 
     def convert_field_with_name_ipv6_address(self, data):
         return data['ipv6_address']['ref_title']
+
+    def convert_field_with_name_assigned_port(self,data):
+        return data['assigned_port']['title']
