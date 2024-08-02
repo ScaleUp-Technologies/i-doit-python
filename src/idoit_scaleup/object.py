@@ -31,7 +31,7 @@ class IDoitObject(IDoitApiBase):
         rtn = self.xml_rpc_call('cmdb.object', params)
         return rtn['result']
 
-    def get_all(self, categories: List = [], ids: List | None = None):
+    def get_all(self, categories: List = [], ids = None):
         params = {
             'filter': {
                 'type': self.obj_type
